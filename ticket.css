@@ -23,6 +23,40 @@
   --high: #f43f5e;
 }
 
+body.light-mode {
+  --bg: #f0f4ff;
+  --surface: #ffffff;
+  --surface2: #e8edf8;
+  --border: rgba(0, 0, 0, 0.09);
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --accent-glow: rgba(79, 110, 247, 0.15);
+}
+
+body.light-mode input[type="text"],
+body.light-mode input[type="email"] {
+  background: white;
+  border-color: #38bdf8;
+}
+
+body.light-mode #description,
+body.light-mode #priority {
+  background: white;
+  border-color: #38bdf8;
+}
+
+body.light-mode .form-card h2 {
+  color: #4f6ef7;
+  background: linear-gradient(135deg, var(--accent), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.light-mode .submit-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent));
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -58,7 +92,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 22px 32px;
-  margin-bottom: 28px;
+  margin-bottom: 18px;
   background: linear-gradient(135deg, #0d1528 0%, #111827 100%);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -112,6 +146,7 @@ body {
 
 .dashboard-text {
   animation: fadeUp 0.5s 0.1s both;
+  margin-bottom: 8px;
 }
 
 .dashboard-text h3 {
@@ -121,10 +156,18 @@ body {
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin: 0 0 16px 4px;
+  /* margin: 0 0 16px 4px; */
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 8px;
+}
+
+.dashboard-text h3::before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border);
 }
 
 .dashboard-text h3::after {
@@ -139,8 +182,9 @@ body {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   animation: fadeUp 0.5s 0.15s both;
+  /* margin: 10px; */
 }
 
 .form {
@@ -308,9 +352,6 @@ body {
 }
 
 /* TABLE */
-.description {
-  /* animation: fadeUp 0.5s 0.3s both; */
-}
 
 .ticket-table {
   width: 100%;
@@ -759,4 +800,9 @@ body {
   .ticket-table td:nth-child(5) {
     display: none;
   }
+}
+
+.button-toggle {
+  cursor: pointer;
+  font-size: 18px;
 }

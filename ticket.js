@@ -13,6 +13,7 @@ const progressCount = document.getElementById("progressCount");
 const resolvedCount = document.getElementById("resolvedCount");
 const filterPriority = document.getElementById("filterByPriority");
 const searchInput = document.getElementById("search-input");
+const themeToggle = document.querySelector(".button-toggle");
 
 let ticketItems = JSON.parse(localStorage.getItem("ticketItems")) || [];
 let editMode = false;
@@ -24,11 +25,26 @@ const ticketPerPage = 4;
 renderTicketItems();
 updateDashboardStats();
 
-/* ── Delete modal ── */
 function openDeleteModal(id) {
   pendingDeleteId = id;
   deleteModal.classList.add("active");
 }
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "light") {
+  document.body.classList.add("light-mode");
+  themeToggle.textContent = "🌙";
+} else {
+  themeToggle.textContent = "☀️";
+}
+
+themeToggle.addEventListener("click", function () {
+  document.body.classList.toggle("light-mode");
+
+  const isLight = document.body.classList.contains("light-mode");
+  themeToggle.textContent = isLight ? "🌙" : "☀️";
+  localStorage.setItem("theme", isLight ? "light" : "dark");
+});
 
 function closeDeleteModal() {
   pendingDeleteId = null;
